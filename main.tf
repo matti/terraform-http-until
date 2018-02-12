@@ -1,3 +1,7 @@
+variable "depends_id" {
+  default = ""
+}
+
 variable "uri" {}
 
 variable "body_must_include" {
@@ -20,6 +24,7 @@ data "external" "http" {
   program = ["ruby", "${path.module}/http.rb"]
 
   query = {
+    depends_id        = "${var.depends_id}"
     uri               = "${var.uri}"
     body_must_include = "${var.body_must_include}"
     code_must_equal   = "${var.code_must_equal}"

@@ -5,12 +5,14 @@ HTTP GETs until code and/or body matches.
 ## usage
 
     module "example-com-is-up" {
-      uri = "http://www.example.com"
+      source  = "matti/until/http"
 
-      code_must_equal   = ""
-      body_must_include = ""
-      max_tries         = 60 # optional
-      interval          = 1 # optional
+      uri = "http://www.example.com"
+      code_must_equal   = ""  # must be set unless body_must_include
+      body_must_include = ""  # must be set unless code_must_equal
+
+      max_tries         = 60  # optional
+      interval          = 1   # optional
       depends_id        = "${optional.resource.id}"
     }
 
